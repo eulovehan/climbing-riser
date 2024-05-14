@@ -2,3 +2,4 @@
 Library/
 Logs/hadercompiler-*
 .vscode/
+.DS_Store
