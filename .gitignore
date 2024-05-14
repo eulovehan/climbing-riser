@@ -1,4 +1,5 @@
 .history/
 Library/
-Logs/hadercompiler-*
+Logs/*compiler*
 .vscode/
+.DS_Store
