@@ -3,3 +3,5 @@ Library/
 Logs/*compiler*
 .vscode/
 .DS_Store
+.vs/
+Temp/
