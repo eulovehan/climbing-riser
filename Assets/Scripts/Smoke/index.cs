@@ -9,7 +9,7 @@ public class Smoke : MonoBehaviour
     float objectHeight; // smoke의 높이
     float topY; // smoke의 상단 y 위치
 		int offsetY = 10; // smoke 높이 보정값
-    Renderer renderer; // 세미콜론 추가
+    Renderer renderer;
 
     void Start()
     {
