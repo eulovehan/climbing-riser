@@ -4,12 +4,15 @@ public class Smoke : MonoBehaviour
 {
     public float riseSpeed = 1f;
     public GameObject smokeObject; // smoke 객체
+		public GameObject player; // 플레이어 객체
 
     float centerY; // smoke의 중앙 y 위치
     float objectHeight; // smoke의 높이
     float topY; // smoke의 상단 y 위치
-		int correctionY = 10; // smoke 높이 보정값
-    Renderer renderer; // 세미콜론 추가
+		int offsetY = 10; // smoke 높이 보정값
+		float playerTopOffsetY = 3; // 플레이어 상단 보정값
+		float playerTopY;
+    Renderer renderer;
 
     void Start()
     {
@@ -28,10 +31,18 @@ public class Smoke : MonoBehaviour
         UpdatePositionAndHeight();
 
 				// 화면 밖으로 벗어나면 smoke 제거(추후 GAME OVER 처리 추가)
-        if (topY - correctionY > Camera.main.ViewportToWorldPoint(Vector3.one).y)
+        if (topY - offsetY > Camera.main.ViewportToWorldPoint(Vector3.one).y)
         {
             Destroy(smokeObject);
         }
+
+				playerTopY = player.transform.position.y + player.GetComponent<Renderer>().bounds.size.y / 2 + playerTopOffsetY;
+
+				// 플레이어 상단 영역보다 높이가 높아지면 smoke 제거(추후 GAME OVER 처리 추가)
+				if (topY > playerTopY)
+				{
+						Destroy(smokeObject);
+				}
     }
 
     void UpdatePositionAndHeight()
