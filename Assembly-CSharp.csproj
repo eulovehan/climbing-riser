@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\riggingTest.cs" />
     <Compile Include="Assets\Scripts\Player\index.cs" />
+    <Compile Include="Assets\Scripts\Camera\PlayerCamera.cs" />
     <Compile Include="Assets\Scripts\moveTest.cs" />
   </ItemGroup>
   <ItemGroup>
