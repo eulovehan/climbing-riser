@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class click : MonoBehaviour
 {
-    // hold set
-    public Transform HoldSetPosition;
-
     // player
     public GameObject Player;
 
@@ -38,14 +35,19 @@ public class click : MonoBehaviour
             // 클릭한 오브젝트 위치 추적
             Vector3 holdPosition = hit.collider.gameObject.transform.position;
 
+            // 플레이어의 홀드 정보
+            Transform HoldSetPosition = Player.GetComponent<index>().RiseAction(holdPosition);
+
+            // 홀드 조건에 만족하지 않으면 그랩불가 (거리, 홀드해제)
+            if (!HoldSetPosition) {
+                return;
+            }
+
             // z축유지
             holdPosition.z = HoldSetPosition.position.z;
-            
-            // 클락한 오브젝트 위치로 설정
-            HoldSetPosition.position = holdPosition;
-            Debug.Log("클릭한 오브젝트의 좌표: " + holdPosition);
 
-            Player.GetComponent<index>().isRise = true;
+            // 클릭한 오브젝트 위치로 설정
+            HoldSetPosition.position = holdPosition;
         }
     }
 }

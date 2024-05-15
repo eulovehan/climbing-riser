@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Smoke\index.cs" />
     <Compile Include="Assets\Scripts\Player\index.cs" />
     <Compile Include="Assets\Scripts\Camera\PlayerCamera.cs" />
+    <Compile Include="Assets\Scripts\hold\ignorePlayer.cs" />
     <Compile Include="Assets\Scripts\Player\click.cs" />
   </ItemGroup>
   <ItemGroup>
