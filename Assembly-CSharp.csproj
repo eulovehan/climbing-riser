@@ -64,13 +64,11 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/2022.3.13f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\ignore.cs" />
-    <Compile Include="Assets\Scripts\Player\index.cs" />
-    <Compile Include="Assets\Scripts\Camera\PlayerCamera.cs" />
-    <Compile Include="Assets\Scripts\Player\click.cs" />
-    <Compile Include="Assets/Scripts/riggingTest.cs" />
+    <Compile Include="Assets/Scripts/ignore.cs" />
     <Compile Include="Assets/Scripts/Smoke/index.cs" />
-    <Compile Include="Assets/Scripts/moveTest.cs" />
+    <Compile Include="Assets/Scripts/Player/index.cs" />
+    <Compile Include="Assets/Scripts/Camera/PlayerCamera.cs" />
+    <Compile Include="Assets/Scripts/Player/click.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

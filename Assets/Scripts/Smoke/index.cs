@@ -8,7 +8,7 @@ public class Smoke : MonoBehaviour
     float centerY; // smoke의 중앙 y 위치
     float objectHeight; // smoke의 높이
     float topY; // smoke의 상단 y 위치
-		int correctionY = 10; // smoke 높이 보정값
+		int offsetY = 10; // smoke 높이 보정값
     Renderer renderer; // 세미콜론 추가
 
     void Start()
@@ -28,7 +28,7 @@ public class Smoke : MonoBehaviour
         UpdatePositionAndHeight();
 
 				// 화면 밖으로 벗어나면 smoke 제거(추후 GAME OVER 처리 추가)
-        if (topY - correctionY > Camera.main.ViewportToWorldPoint(Vector3.one).y)
+        if (topY - offsetY > Camera.main.ViewportToWorldPoint(Vector3.one).y)
         {
             Destroy(smokeObject);
         }
