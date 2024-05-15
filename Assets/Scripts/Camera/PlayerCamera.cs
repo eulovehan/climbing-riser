@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
@@ -10,18 +8,27 @@ public class PlayerCamera : MonoBehaviour
     public Vector3 offset; // 카메라와 플레이어 사이의 고정된 거리(오프셋)입니다.
     private float backgroundX; // 배경의 x 위치를 저장하는 변수입니다.
     private float minY; // 카메라의 최소 Y 위치를 저장하는 변수입니다.
+    private float offsetX = 10; // 카메라 X 위치 보정값입니다.
+    private float offsetY = 20.5f; // 카메라 Y 위치 보정값입니다.
 
     void LateUpdate()
+{
+    Renderer backgroundRenderer = background.GetComponent<Renderer>();
+    if (backgroundRenderer != null)
     {
-        Renderer backgroundRenderer = background.GetComponent<Renderer>();
-        backgroundX = background.transform.position.x - backgroundRenderer.bounds.size.x / 2;
-        minY = background.transform.position.y - backgroundRenderer.bounds.size.y / 2 + Camera.main.orthographicSize;
+        backgroundX = background.transform.position.x + backgroundRenderer.bounds.size.x / 2 + offsetX;
+        minY = background.transform.position.y - backgroundRenderer.bounds.size.y / 2 + Camera.main.orthographicSize - offsetY;
 
         float targetY = player.position.y + offset.y;
-        float cameraMinY = Mathf.Max(targetY, minY); // 캐릭터 위치와 배경 하단 중 높은 위치 선택
+        float cameraMinY = Mathf.Max(targetY, minY);
 
         Vector3 desiredPosition = new Vector3(backgroundX, cameraMinY, transform.position.z);
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
     }
+    else
+    {
+        Debug.LogError("No Renderer attached to the Background object.");
+    }
+}
 }
