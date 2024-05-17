@@ -1,5 +1,6 @@
 .history/
 Library/
+Logs/
 Logs/*compiler*
 .vscode/
 .DS_Store
