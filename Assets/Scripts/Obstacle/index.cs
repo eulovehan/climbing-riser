@@ -36,6 +36,7 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(tagToPlayer))
         {
+            Debug.Log("OnCollisionEnter2D: " + collision.gameObject.name);
             GameManager.Instance.GameOver();
         }
     }
