@@ -5686,9 +5686,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 955548490}
-  - component: {fileID: 955548489}
   - component: {fileID: 955548488}
   - component: {fileID: 955548487}
+  - component: {fileID: 955548489}
   - component: {fileID: 955548491}
   m_Layer: 0
   m_Name: plant
@@ -5831,7 +5831,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -92.36872, y: 8.954926, z: 0.33679682}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1192916248}
@@ -9200,9 +9200,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1453992701}
-  - component: {fileID: 1453992700}
   - component: {fileID: 1453992699}
   - component: {fileID: 1453992698}
+  - component: {fileID: 1453992700}
   - component: {fileID: 1453992702}
   m_Layer: 0
   m_Name: Hbim
@@ -9345,7 +9345,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -88.50945, y: 6.5417404, z: 0.33679682}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1192916248}
@@ -10126,9 +10126,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1580358945}
-  - component: {fileID: 1580358944}
   - component: {fileID: 1580358943}
   - component: {fileID: 1580358942}
+  - component: {fileID: 1580358944}
   - component: {fileID: 1580358946}
   m_Layer: 0
   m_Name: fire
@@ -10271,7 +10271,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -96.68872, y: 6.554924, z: 0.33679682}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1192916248}
