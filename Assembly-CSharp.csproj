@@ -72,7 +72,6 @@
     <Compile Include="Assets/Scripts/Camera/PlayerCamera.cs" />
     <Compile Include="Assets/Scripts/GameManager/index.cs" />
     <Compile Include="Assets/Scripts/hold/ignorePlayer.cs" />
-    <Compile Include="Assets/Scripts/Player/obstacleCollision.cs" />
     <Compile Include="Assets/Scripts/Player/click.cs" />
     <Compile Include="Assets/Scripts/Obstacle/index.cs" />
   </ItemGroup>
