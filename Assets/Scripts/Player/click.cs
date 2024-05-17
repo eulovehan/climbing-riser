@@ -7,6 +7,14 @@ public class click : MonoBehaviour
 {
     // player
     public GameObject Player;
+    public AudioSource audioSource; // 오디오 소스
+    public AudioClip holdSound; // 홀드 터치할 때 재생할 소리
+
+    void start()
+    {
+        audioSource = Player.GetComponent<AudioSource>();
+        holdSound = Resources.Load<AudioClip>("Audio/holdSound");
+    }
 
     void Update()
     {
@@ -48,6 +56,11 @@ public class click : MonoBehaviour
 
             // 클릭한 오브젝트 위치로 설정
             HoldSetPosition.position = holdPosition;
+            if (!audioSource.isPlaying || audioSource.clip != holdSound)
+            {
+                audioSource.clip = holdSound;
+                audioSource.Play();
+            }
         }
     }
 }
