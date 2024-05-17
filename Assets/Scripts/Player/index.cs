@@ -14,6 +14,9 @@ public class index : MonoBehaviour
     public Transform rightGrab; // 오른쪽 그랩 위치
     public Transform leftHand; // 왼손
     public Transform rightHand; // 오른손
+
+    public AudioSource audioSource; // 오디오 소스
+    public AudioClip moveSound; // 움직일 때 재생할 소리
     
     // states
     private Vector3 leftTouchTarget; // 현재 잡고있는 오브젝트 좌표
@@ -38,6 +41,10 @@ public class index : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        // AudioSource 컴포넌트를 Player 오브젝트에서 가져옵니다.
+        audioSource = GetComponent<AudioSource>();
+        // 오디오 클립 로드
+        moveSound = Resources.Load<AudioClip>("Audio/moveSound");
     }
 
     // Update is called once per frame
@@ -102,6 +109,13 @@ public class index : MonoBehaviour
                 moveObject.SetActive(true);
                 stopObject.SetActive(false);
                 riseObject.SetActive(false);
+                // 움직일 때 소리 재생
+                if (!audioSource.isPlaying || audioSource.clip != moveSound)
+                {
+                    audioSource.clip = moveSound;
+                    audioSource.loop = true; // 반복 재생 설정
+                    audioSource.Play();
+                }
                 break;
             }
 
@@ -109,6 +123,11 @@ public class index : MonoBehaviour
                 moveObject.SetActive(false);
                 stopObject.SetActive(true);
                 riseObject.SetActive(false);
+                // 멈출 때 소리 멈춤
+                if (audioSource.isPlaying)
+                {
+                    audioSource.Stop();
+                }
                 break;
             }
 
@@ -116,6 +135,11 @@ public class index : MonoBehaviour
                 moveObject.SetActive(false);
                 stopObject.SetActive(false);
                 riseObject.SetActive(true);
+                // 오를 때 소리 멈춤
+                if (audioSource.isPlaying)
+                {
+                    audioSource.Stop();
+                }
                 break;
             }
         }
