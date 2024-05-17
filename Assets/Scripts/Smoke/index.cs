@@ -12,11 +12,11 @@ public class Smoke : MonoBehaviour
 		int offsetY = 10; // smoke 높이 보정값
 		float playerTopOffsetY = 3; // 플레이어 상단 보정값
 		float playerTopY;
-    Renderer renderer;
+    Renderer rendererObj;
 
     void Start()
     {
-        renderer = GetComponent<Renderer>();
+        rendererObj = GetComponent<Renderer>();
 
         // 초기 중앙 y 위치 및 높이 설정
         UpdatePositionAndHeight();
@@ -48,7 +48,7 @@ public class Smoke : MonoBehaviour
     void UpdatePositionAndHeight()
     {
         centerY = transform.position.y;
-        objectHeight = renderer.bounds.size.y;
+        objectHeight = rendererObj.bounds.size.y;
         topY = centerY + objectHeight / 2;
     }
 }

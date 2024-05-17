@@ -64,11 +64,6 @@ public class index : MonoBehaviour
     // 움직임 상태 설정
     void SetMoveState()
     {
-        // 올라가는 상태일 시 올라가는 상태로 고정
-        if (isLeftGrab || isRightGrab) {
-            SetActionAnimation(ActionState.Rise);
-            return;
-        }
 
         // 입력 감지. 음수면 좌측, 양수면 우측
         float x = Input.GetAxis("Horizontal");
@@ -76,9 +71,17 @@ public class index : MonoBehaviour
         // 이동 거리 대입
         movement.x = x;
 
+        // 올라가는 상태일 시 취소
+        if ((isLeftGrab || isRightGrab) && movement.sqrMagnitude <= 0) {
+            SetActionAnimation(ActionState.Rise);
+            return;
+        }
+
         // 상태 변화 감지에 따른 애니메이션 갱신
         if (movement.sqrMagnitude > 0) {
             SetActionAnimation(ActionState.Move);
+            isLeftGrab = false;
+            isRightGrab = false;
         }
 
         else {
@@ -158,13 +161,16 @@ public class index : MonoBehaviour
                 return null;
             }
 
-            // 왼쪽 그랩 설정 + 현재 잡고있는 요소에 추가
-            else {
-                isLeftGrab = true;
-                leftTouchTarget = targetPosition;
-
-                return leftGrab;
+            // 이미 잡고있는데 한손만 잡고있는 경우 불가
+            if (isLeftGrab && !isRightGrab) {
+                return null;
             }
+            
+            // 왼쪽 그랩 설정 + 현재 잡고있는 요소에 추가
+            isLeftGrab = true;
+            leftTouchTarget = targetPosition;
+
+            return leftGrab;
         }
         
         // 오른손 요구
@@ -180,13 +186,16 @@ public class index : MonoBehaviour
                 return null;
             }
 
-            // 오른쪽 그랩 설정 + 현재 잡고있는 요소에 추가
-            else {
-                isRightGrab = true;
-                rightTouchTarget = targetPosition;
-
-                return rightGrab;
+            // 이미 잡고있는데 한손만 잡고있는 경우 불가
+            if (isRightGrab && !isLeftGrab) {
+                return null;
             }
+
+            // 오른쪽 그랩 설정 + 현재 잡고있는 요소에 추가
+            isRightGrab = true;
+            rightTouchTarget = targetPosition;
+
+            return rightGrab;
         }
     }
 
@@ -311,7 +320,7 @@ public class index : MonoBehaviour
                 Vector3 currentPosition = transform.position;
 
                 // y 값을 -1로 설정하여 오브젝트를 아래로 이동시킴
-                currentPosition.y -= 0.5f * Time.deltaTime;
+                currentPosition.y -= 1f * Time.deltaTime;
 
                 // 오브젝트의 위치를 업데이트
                 transform.position = currentPosition;
