@@ -126,6 +126,7 @@ public class index : MonoBehaviour
                 // 멈출 때 소리 멈춤
                 if (audioSource.isPlaying)
                 {
+                    Debug.Log("stop1");
                     audioSource.Stop();
                 }
                 break;
@@ -135,11 +136,6 @@ public class index : MonoBehaviour
                 moveObject.SetActive(false);
                 stopObject.SetActive(false);
                 riseObject.SetActive(true);
-                // 오를 때 소리 멈춤
-                if (audioSource.isPlaying)
-                {
-                    audioSource.Stop();
-                }
                 break;
             }
         }

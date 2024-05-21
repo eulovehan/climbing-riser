@@ -71,6 +71,8 @@
     <Compile Include="Assets/Scripts/Player/index.cs" />
     <Compile Include="Assets/Scripts/Camera/PlayerCamera.cs" />
     <Compile Include="Assets/Scripts/GameManager/index.cs" />
+    <Compile Include="Assets/Scripts/StartButton/index.cs" />
+    <Compile Include="Assets/Scripts/RestartButton/index.cs" />
     <Compile Include="Assets/Scripts/Object/help.cs" />
     <Compile Include="Assets/Scripts/Camera/MainCamera.cs" />
     <Compile Include="Assets/Scripts/Camera/CameraSwitch.cs" />

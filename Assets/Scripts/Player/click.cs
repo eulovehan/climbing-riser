@@ -2,11 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class click : MonoBehaviour
 {
     // player
     public GameObject Player;
+    private AudioSource audioSource;
+    public AudioClip holdSound; // 홀드 소리 오디오 클립
+
+    void Start()
+    {
+        if (SceneManager.GetActiveScene().name != "ClimbingRiser")
+        {
+            enabled = false;
+            return;
+        }
+        audioSource = Player.GetComponent<AudioSource>();
+        holdSound = Resources.Load<AudioClip>("Audio/holdSound");
+
+        if (audioSource == null)
+        {
+            Debug.LogError("Player 오브젝트에 AudioSource 컴포넌트가 없습니다.");
+        }
+
+    }
 
     void Update()
     {
@@ -48,6 +68,13 @@ public class click : MonoBehaviour
 
             // 클릭한 오브젝트 위치로 설정
             HoldSetPosition.position = holdPosition;
+
+            // 홀드 잡는 소리 재생
+            if (audioSource != null && holdSound != null)
+            {
+                Debug.Log("clear!");
+                audioSource.PlayOneShot(holdSound);
+            }
         }
     }
 }

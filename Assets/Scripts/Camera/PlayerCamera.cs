@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCamera : MonoBehaviour
 {
@@ -15,6 +16,12 @@ public class PlayerCamera : MonoBehaviour
     public float maxZoom = 10.0f; // 최대 줌
 
     private void Start() {
+        if (SceneManager.GetActiveScene().name != "ClimbingRiser")
+        {
+            enabled = false;
+            return;
+        }
+
         Renderer backgroundRenderer = background.GetComponent<Renderer>();
         float leftBound = backgroundRenderer.bounds.min.x;
         float rightBound = backgroundRenderer.bounds.max.x;

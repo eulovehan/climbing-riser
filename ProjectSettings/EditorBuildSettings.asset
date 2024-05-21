@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Scene1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/GameStart.unity
+    guid: 8f7cf0f48a1db4dde97b2d7598754b2f
+  - enabled: 1
+    path: Assets/Scenes/ClimbingRiser.unity
+    guid: f5a8327bc4eb85f419b9d1a1160bc84c
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 3cbe91d3827cd4f40b54bba5e36993c9
   m_configObjects: {}

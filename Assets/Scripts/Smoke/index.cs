@@ -30,18 +30,14 @@ public class Smoke : MonoBehaviour
 				// 현재 위치 및 높이 갱신
         UpdatePositionAndHeight();
 
-				// 화면 밖으로 벗어나면 smoke 제거(추후 GAME OVER 처리 추가)
-        if (topY - offsetY > Camera.main.ViewportToWorldPoint(Vector3.one).y)
-        {
-            Destroy(smokeObject);
-        }
-
 				playerTopY = player.transform.position.y + player.GetComponent<Renderer>().bounds.size.y / 2 + playerTopOffsetY;
 
 				// 플레이어 상단 영역보다 높이가 높아지면 smoke 제거(추후 GAME OVER 처리 추가)
 				if (topY > playerTopY)
 				{
 						Destroy(smokeObject);
+            Debug.Log("OVER!");
+            GameManager.Instance.GameOver();
 				}
     }
 
