@@ -48,7 +48,7 @@ public class click : MonoBehaviour
             }
 
             // 홀드가 아니면 중지
-            if (!hit.collider.CompareTag("Hold")) {
+            if (!(hit.collider.CompareTag("Hold") || hit.collider.CompareTag("WindowHold"))) {
                 return;
             }
 

@@ -36,8 +36,15 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(tagToPlayer))
         {
+            collision.gameObject.GetComponent<index>().obstacleShock();
             Debug.Log("OnCollisionEnter2D: " + collision.gameObject.name);
-            GameManager.Instance.GameOver();
+            remove();
+            // GameManager.Instance.GameOver();
         }
+    }
+
+    // remove
+    void remove() {
+        Destroy(gameObject);
     }
 }

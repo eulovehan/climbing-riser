@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -36,6 +38,14 @@ public class index : MonoBehaviour
         Stop,
         Rise
     }
+
+    // 가이드 오브젝트 색상 메모리
+    private Dictionary<GameObject, Color> holdOriginalColors = new Dictionary<GameObject, Color>();
+    private Dictionary<GameObject, Color> windowHoldOriginalColors = new Dictionary<GameObject, Color>();
+
+    // color
+    private Color guideColor = Color.green;
+    private Color windowHoldColor = new Color(0f, 255f, 33f, 0.1f);
     
     // Start is called before the first frame update
     void Start()
@@ -55,6 +65,9 @@ public class index : MonoBehaviour
 
         // 올라가는 상태 설정
         SetRise();
+
+        // holdGuid
+        holdGuid();
     }
 
     void FixedUpdate()
@@ -346,5 +359,153 @@ public class index : MonoBehaviour
                 transform.position = currentPosition;
             }
         }
+    }
+
+    // 하일라이트
+    void holdGuid() {
+        // 탐색반경
+        float range = (!isLeftGrab && !isRightGrab) ? 3.5f : 5f;
+        
+        // 플레이어 위치
+        Vector3 playerPosition = transform.position;
+
+        // 일반 홀드 가이드
+        normalHoldGuid(range, playerPosition);
+
+        // 창문 홀드 가이드
+        windowHoldGuid(range, playerPosition);
+    }
+
+    // 일반 홀드 가이드
+    void normalHoldGuid(float range, Vector3 playerPosition) {
+        // 해당 태그를 가진 모든 오브젝트 찾기
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Hold");
+
+        // 현재 반경 내에 있는 오브젝트들을 추적하기 위한 HashSet
+        HashSet<GameObject> objectsWithinRadius = new HashSet<GameObject>();
+
+        foreach (GameObject obj in objectsWithTag)
+        {
+            // 플레이어와 오브젝트 사이의 거리 계산
+            float distance = Vector3.Distance(playerPosition, obj.transform.position);
+            Renderer objRenderer = obj.GetComponent<Renderer>();
+
+            if (objRenderer != null)
+            {
+                if (distance <= range)
+                {
+                    // 오브젝트가 반경 내에 있는 경우 색상 변경
+                    objectsWithinRadius.Add(obj);
+                    
+                    // 원래 색상을 저장하지 않았다면 저장
+                    if (!holdOriginalColors.ContainsKey(obj))
+                    {
+                        holdOriginalColors[obj] = objRenderer.material.color;
+                    }
+
+                    // 색상 변경
+                    objRenderer.material.color = guideColor;
+                }
+                else if (holdOriginalColors.ContainsKey(obj))
+                {
+                    // 반경 밖으로 벗어난 경우 원래 색상 복원
+                    objRenderer.material.color = holdOriginalColors[obj];
+                    holdOriginalColors.Remove(obj);
+                }
+            }
+        }
+
+        // 반경 내에 있는 오브젝트가 아니라면 원래 색상 복원
+        List<GameObject> keysToRemove = new List<GameObject>();
+        foreach (var kvp in holdOriginalColors)
+        {
+            if (!objectsWithinRadius.Contains(kvp.Key))
+            {
+                Renderer objRenderer = kvp.Key.GetComponent<Renderer>();
+                if (objRenderer != null)
+                {
+                    objRenderer.material.color = kvp.Value;
+                    keysToRemove.Add(kvp.Key);
+                }
+            }
+        }
+
+        // 원래 색상으로 복원한 오브젝트는 딕셔너리에서 제거
+        foreach (GameObject key in keysToRemove)
+        {
+            holdOriginalColors.Remove(key);
+        }
+
+        return;
+    }
+
+    // 창문 홀드 가이드
+    void windowHoldGuid(float range, Vector3 playerPosition) {
+        // 해당 태그를 가진 모든 오브젝트 찾기
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("WindowHold");
+
+        // 현재 반경 내에 있는 오브젝트들을 추적하기 위한 HashSet
+        HashSet<GameObject> objectsWithinRadius = new HashSet<GameObject>();
+
+        foreach (GameObject obj in objectsWithTag)
+        {
+            // 플레이어와 오브젝트 사이의 거리 계산
+            float distance = Vector3.Distance(playerPosition, obj.transform.position);
+            Renderer objRenderer = obj.GetComponent<Renderer>();
+
+            if (objRenderer != null)
+            {
+                if (distance <= range)
+                {
+                    // 오브젝트가 반경 내에 있는 경우 색상 변경
+                    objectsWithinRadius.Add(obj);
+                    
+                    // 원래 색상을 저장하지 않았다면 저장
+                    if (!windowHoldOriginalColors.ContainsKey(obj))
+                    {
+                        windowHoldOriginalColors[obj] = objRenderer.material.color;
+                    }
+
+                    // 색상 변경
+                    objRenderer.material.color = windowHoldColor;
+                }
+                else if (windowHoldOriginalColors.ContainsKey(obj))
+                {
+                    // 반경 밖으로 벗어난 경우 원래 색상 복원
+                    objRenderer.material.color = windowHoldOriginalColors[obj];
+                    windowHoldOriginalColors.Remove(obj);
+                }
+            }
+        }
+
+        // 반경 내에 있는 오브젝트가 아니라면 원래 색상 복원
+        List<GameObject> keysToRemove = new List<GameObject>();
+        foreach (var kvp in windowHoldOriginalColors)
+        {
+            if (!objectsWithinRadius.Contains(kvp.Key))
+            {
+                Renderer objRenderer = kvp.Key.GetComponent<Renderer>();
+                if (objRenderer != null)
+                {
+                    objRenderer.material.color = kvp.Value;
+                    keysToRemove.Add(kvp.Key);
+                }
+            }
+        }
+
+        // 원래 색상으로 복원한 오브젝트는 딕셔너리에서 제거
+        foreach (GameObject key in keysToRemove)
+        {
+            windowHoldOriginalColors.Remove(key);
+        }
+
+        return;
+    }
+
+    // 핸드그립 해제
+    public void obstacleShock() {
+        isLeftGrab = false;
+        isRightGrab = false;
+        SetActionAnimation(ActionState.Stop);
     }
 }

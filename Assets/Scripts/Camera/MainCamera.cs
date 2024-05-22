@@ -25,7 +25,7 @@ public class MainCamera : MonoBehaviour
         Renderer backgroundRenderer = background.GetComponent<Renderer>();
         if (backgroundRenderer != null)
         {
-            backgroundX = background.transform.position.x + backgroundRenderer.bounds.size.x / 2 + offsetX;
+            backgroundX = background.transform.position.x + backgroundRenderer.bounds.size.x + offsetX;
             minY = background.transform.position.y - backgroundRenderer.bounds.size.y / 2 + Camera.main.orthographicSize - offsetY;
 
             float targetY = player.position.y + offset.y;
