@@ -139,7 +139,6 @@ public class index : MonoBehaviour
                 // 멈출 때 소리 멈춤
                 if (audioSource.isPlaying)
                 {
-                    Debug.Log("stop1");
                     audioSource.Stop();
                 }
                 break;

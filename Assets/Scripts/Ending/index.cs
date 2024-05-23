@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ending : MonoBehaviour
@@ -31,10 +30,7 @@ public class Ending : MonoBehaviour
         float totalHuman = gameManager[0].GetComponent<GameManager>().totalHuman;
         float filedResuceHuman = gameManager[0].GetComponent<GameManager>().filedResuceHuman;
         bool isLive = gameManager[0].GetComponent<GameManager>().isLive;
-        Debug.Log("총 인원: " + totalHuman);
-        Debug.Log("구조 못한 사람 수: " + filedResuceHuman);
-        Debug.Log("생존 여부: " + isLive);
-
+        
         if (isLive) {
             if (filedResuceHuman == 0) {
                 targetEnding = ending6;
@@ -64,7 +60,6 @@ public class Ending : MonoBehaviour
         yield return new WaitForSeconds(4f);
 
         // 원하는 작업 수행
-        Debug.Log("4초가 지났습니다!");
         ending();
     }
     
@@ -80,7 +75,6 @@ public class Ending : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float alpha = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
             spriteRenderer.color = new Color(color.r, color.g, color.b, alpha);
-            Debug.Log($"Alpha: {alpha}, Elapsed Time: {elapsedTime}");
             yield return null;
         }
 

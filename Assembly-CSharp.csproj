@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Camera\PlayerCamera_vertical.cs" />
     <Compile Include="Assets\Scripts\ignore.cs" />
     <Compile Include="Assets\Scripts\Ending\index.cs" />
+    <Compile Include="Assets\Scripts\Rooptop\top.cs" />
     <Compile Include="Assets\Scripts\Smoke\index.cs" />
     <Compile Include="Assets\Scripts\hold\createObstacle.cs" />
     <Compile Include="Assets\Scripts\Player\index.cs" />
