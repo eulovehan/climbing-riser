@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,14 @@ public class GameManager : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip backgroundSound; // 배경 음악 오디오 클립
+    public float totalHuman = 0;
+    public float filedResuceHuman = 0; // 구조하지 못한 사람 수
+    public bool isLive = true; // 생존 여부
+
+    void Start() {
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Human");
+        totalHuman = objectsWithTag.Length;
+    }
 
     void Awake()
     {
@@ -32,11 +41,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // 옥상에 올라감
+
+    // 가스에 빠짐
     public void GameOver()
     {
+        GameOutVolume();
+        
+        // 구조 못한 사람 수 파악
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Human");
+        filedResuceHuman = objectsWithTag.Length;
+        isLive = false;
+        
         IsGameOver = true;
         Debug.Log("GAME OVER!");
-        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+        SceneManager.LoadScene("Ending", LoadSceneMode.Single);
+    }
+
+    // 게임 클리어
+    public void GameClear()
+    {
+        GameOutVolume();
+        
+        // 구조 못한 사람 수 파악
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Human");
+        filedResuceHuman = objectsWithTag.Length;
+        isLive = true;
+        
+        IsGameOver = true;
+        Debug.Log("GAME CLEAR!");
+        SceneManager.LoadScene("Ending", LoadSceneMode.Single);
     }
 
     public void RestartGame()
@@ -85,5 +119,27 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Background music is not set.");
         }
+    }
+    
+    // 코루틴을 시작하는 메서드
+    public void GameOutVolume()
+    {
+        StartCoroutine(FadeOut());
+    }
+    
+    // 오디오 볼륨을 서서히 줄이는 코루틴
+    private IEnumerator FadeOut()
+    {
+        float fadeDuration = 5.0f;
+        float startVolume = audioSource.volume;
+
+        for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+        {
+            audioSource.volume = Mathf.Lerp(startVolume, 0, t / fadeDuration);
+            yield return null;
+        }
+
+        audioSource.volume = 0;
+        audioSource.Stop();
     }
 }

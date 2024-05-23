@@ -8,6 +8,8 @@ TagManager:
   - Obstacle
   - Pipe
   - WindowHold
+  - Human
+  - GameManager
   layers:
   - Default
   - TransparentFX

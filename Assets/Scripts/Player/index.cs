@@ -16,6 +16,8 @@ public class index : MonoBehaviour
     public Transform rightGrab; // 오른쪽 그랩 위치
     public Transform leftHand; // 왼손
     public Transform rightHand; // 오른손
+    public bool isLeftGrab; // 왼쪽 손 그랩 여부
+    public bool isRightGrab; // 오른쪽 손 그랩 여부
 
     public AudioSource audioSource; // 오디오 소스
     public AudioClip moveSound; // 움직일 때 재생할 소리
@@ -23,8 +25,6 @@ public class index : MonoBehaviour
     // states
     private Vector3 leftTouchTarget; // 현재 잡고있는 오브젝트 좌표
     private Vector3 rightTouchTarget; // 현재 잡고있는 오브젝트 좌표
-    private bool isLeftGrab; // 왼쪽 손 그랩 여부
-    private bool isRightGrab; // 오른쪽 손 그랩 여부
 
     // components
     private Rigidbody2D rb;

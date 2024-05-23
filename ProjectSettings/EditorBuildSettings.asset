@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ClimbingRiser.unity
     guid: f5a8327bc4eb85f419b9d1a1160bc84c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOver.unity
     guid: 3cbe91d3827cd4f40b54bba5e36993c9
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: 540f66ac923a5aa42a4b69881d0df604
   m_configObjects: {}
