@@ -18707,7 +18707,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 116900460492410563, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.14
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 116900460492410563, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22674,7 +22674,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13.696961
+  orthographic size: 11.070267
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -24622,15 +24622,15 @@ PrefabInstance:
       objectReference: {fileID: 1125739146}
     - target: {fileID: 1081750589931799475, guid: 50210cae171f8a94893a1366c3f29c42, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1081750589931799475, guid: 50210cae171f8a94893a1366c3f29c42, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.34
+      value: -7.11
       objectReference: {fileID: 0}
     - target: {fileID: 1081750589931799475, guid: 50210cae171f8a94893a1366c3f29c42, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 96.87
+      value: 97.64
       objectReference: {fileID: 0}
     - target: {fileID: 1081750589931799475, guid: 50210cae171f8a94893a1366c3f29c42, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27814,8 +27814,8 @@ Transform:
   m_GameObject: {fileID: 1837878652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 134, y: -139, z: 0}
-  m_LocalScale: {x: 7.0024, y: 7.0024, z: 7.0024}
+  m_LocalPosition: {x: 133.8, y: -163.4, z: 0}
+  m_LocalScale: {x: 10.589632, y: 10.589632, z: 10.589632}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -27832,7 +27832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c30ae471dd54e31bbd96764d012266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  riseSpeed: 0.5
+  riseSpeed: 0.45
   smokeObject: {fileID: 1837878652}
   player: {fileID: 1125739144}
 --- !u!1001 &1848432878
@@ -30332,12 +30332,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1896874134}
     m_Modifications:
     - target: {fileID: 116900460492410563, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.6995
+      objectReference: {fileID: 0}
+    - target: {fileID: 116900460492410563, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.12
+      value: -0.71
       objectReference: {fileID: 0}
     - target: {fileID: 116900460492410563, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 94.54
+      value: 94.4675
       objectReference: {fileID: 0}
     - target: {fileID: 116900460492410563, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_LocalPosition.z
