@@ -125,8 +125,10 @@ public class index : MonoBehaviour
                 // 움직일 때 소리 재생
                 if (!audioSource.isPlaying || audioSource.clip != moveSound)
                 {
+                    Debug.Log("play sound");
                     audioSource.clip = moveSound;
                     audioSource.loop = true; // 반복 재생 설정
+                    audioSource.volume = 3f; // 볼륨 설정
                     audioSource.Play();
                 }
                 break;

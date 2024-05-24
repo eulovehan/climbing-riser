@@ -153,6 +153,7 @@ public class GameManager : MonoBehaviour
             if (audioSource.clip != introBackgroundSound || !audioSource.isPlaying)
             {
                 audioSource.clip = introBackgroundSound;
+                audioSource.volume = 0.5f;
                 audioSource.Play();
             }
         }
@@ -161,6 +162,7 @@ public class GameManager : MonoBehaviour
             if (audioSource.clip != backgroundSound || !audioSource.isPlaying)
             {
                 audioSource.clip = backgroundSound;
+                audioSource.volume = 0.2f;
                 audioSource.Play();
             }
         }
