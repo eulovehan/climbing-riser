@@ -1810,6 +1810,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 112451025}
+    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 112451028}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &112451023 stripped
 Transform:
@@ -1834,6 +1837,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
+--- !u!114 &112451028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112451024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 955548486}
+  obstacleOffsetY: 30
 --- !u!1001 &112571737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2328,9 +2345,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1044050358}
-    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1044050359}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!1001 &165858691
 PrefabInstance:
@@ -2448,7 +2462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_Name
-      value: H_little_O (34)
+      value: H_little_O (34)_withObstacle
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -1250271920375812647, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
@@ -2633,9 +2647,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 176840101}
-    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 176840100}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &176840098 stripped
 Transform:
@@ -2647,20 +2658,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
   m_PrefabInstance: {fileID: 176840097}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &176840100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176840099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 1453992697}
-  obstacleOffsetY: 30
 --- !u!114 &176840101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4230,6 +4227,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
+--- !u!114 &316271175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316271168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 1453992697}
+  obstacleOffsetY: 30
 --- !u!1 &317536178 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1160515051447931416, guid: 7aef214be8d76aa4b89f98c3dbb0b0a7, type: 3}
@@ -4298,9 +4309,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 327441661}
-    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 327441660}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &327441658 stripped
 Transform:
@@ -4312,20 +4320,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
   m_PrefabInstance: {fileID: 327441657}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &327441660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327441659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 1453992697}
-  obstacleOffsetY: 30
 --- !u!114 &327441661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5443,20 +5437,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
---- !u!114 &409752330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409752325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 955548486}
-  obstacleOffsetY: 30
 --- !u!1001 &412418586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5533,7 +5513,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1110058016272644868, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
       propertyPath: m_Name
-      value: H_small_O (27)
+      value: H_small_O (27)_withObstacle
       objectReference: {fileID: 0}
     - target: {fileID: 3444816491394986209, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5586,6 +5566,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1110058016272644868, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 416525020}
+    - targetCorrespondingSourceObject: {fileID: 1110058016272644868, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 416525023}
   m_SourcePrefab: {fileID: 100100000, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
 --- !u!4 &416525018 stripped
 Transform:
@@ -5655,6 +5638,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.27, y: 0.14}
   m_EdgeRadius: 0
+--- !u!114 &416525023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416525019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 955548486}
+  obstacleOffsetY: 30
 --- !u!1001 &430926290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5705,7 +5702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_Name
-      value: H_little_O (56)
+      value: H_little_O (56)_withObstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5714,6 +5711,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 430926293}
+    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 430926296}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &430926291 stripped
 Transform:
@@ -5738,6 +5738,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
+--- !u!114 &430926296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430926292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 1453992697}
+  obstacleOffsetY: 30
 --- !u!1001 &432091825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6991,7 +7005,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1110058016272644868, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
       propertyPath: m_Name
-      value: H_small_O (3)
+      value: H_small_O (3)_withObstacle
       objectReference: {fileID: 0}
     - target: {fileID: 3444816491394986209, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7046,7 +7060,7 @@ PrefabInstance:
       addedObject: {fileID: 510212606}
     - targetCorrespondingSourceObject: {fileID: 1110058016272644868, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 510212605}
+      addedObject: {fileID: 510212609}
   m_SourcePrefab: {fileID: 100100000, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
 --- !u!4 &510212603 stripped
 Transform:
@@ -7058,20 +7072,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1110058016272644868, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
   m_PrefabInstance: {fileID: 510212602}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &510212605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510212604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 1580358941}
-  obstacleOffsetY: 30
 --- !u!114 &510212606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7130,6 +7130,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.27, y: 0.14}
   m_EdgeRadius: 0
+--- !u!114 &510212609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510212604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 1580358941}
+  obstacleOffsetY: 30
 --- !u!1001 &510247594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7447,7 +7461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_Name
-      value: H_little_O (41)
+      value: H_little_O (41)_withObstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7456,6 +7470,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 538338039}
+    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 538338042}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &538338037 stripped
 Transform:
@@ -7480,6 +7497,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
+--- !u!114 &538338042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538338038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 1453992697}
+  obstacleOffsetY: 30
 --- !u!1001 &539010188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10021,6 +10052,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
+--- !u!114 &717850681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717850674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 1580358941}
+  obstacleOffsetY: 30
 --- !u!1001 &721111200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11404,7 +11449,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1110058016272644868, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
       propertyPath: m_Name
-      value: H_small_O
+      value: H_small_O_withObstacle
       objectReference: {fileID: 0}
     - target: {fileID: 3444816491394986209, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11756,9 +11801,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 828049750}
-    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 828049749}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &828049747 stripped
 Transform:
@@ -11770,20 +11812,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
   m_PrefabInstance: {fileID: 828049746}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &828049749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828049748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 1453992697}
-  obstacleOffsetY: 30
 --- !u!114 &828049750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13556,7 +13584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_Name
-      value: H_little_O (9)
+      value: H_little_O (9)_withObstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13565,6 +13593,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1397481175}
+    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1397481178}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!1 &958937337 stripped
 GameObject:
@@ -14193,9 +14224,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1110058016272644868, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 409752329}
-    - targetCorrespondingSourceObject: {fileID: 1110058016272644868, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 409752330}
   m_SourcePrefab: {fileID: 100100000, guid: a900dc5e40616f745abf8342ea7f6e1e, type: 3}
 --- !u!1001 &998975190
 PrefabInstance:
@@ -14942,20 +14970,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
---- !u!114 &1044050359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044050354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 1453992697}
-  obstacleOffsetY: 30
 --- !u!1 &1044295030
 GameObject:
   m_ObjectHideFlags: 0
@@ -17505,7 +17519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_Name
-      value: H_little_O (85)
+      value: H_little_O (85)_withObstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17514,6 +17528,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1202827790}
+    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1202827793}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &1202827788 stripped
 Transform:
@@ -17538,6 +17555,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
+--- !u!114 &1202827793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202827789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 955548486}
+  obstacleOffsetY: 30
 --- !u!1001 &1211590427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17904,7 +17935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_Name
-      value: H_little_O (91)
+      value: H_little_O (91)_withObstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17913,6 +17944,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1264635125}
+    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1264635128}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &1264635123 stripped
 Transform:
@@ -17937,6 +17971,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
+--- !u!114 &1264635128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264635124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 0}
+  obstacleOffsetY: 30
 --- !u!1001 &1270574205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18000,9 +18048,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1270574209}
-    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1270574208}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &1270574206 stripped
 Transform:
@@ -18014,20 +18059,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
   m_PrefabInstance: {fileID: 1270574205}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1270574208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270574207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 1453992697}
-  obstacleOffsetY: 30
 --- !u!114 &1270574209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18149,9 +18180,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1282311011}
-    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1282311010}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &1282311008 stripped
 Transform:
@@ -18163,20 +18191,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
   m_PrefabInstance: {fileID: 1282311007}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1282311010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1282311009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 1453992697}
-  obstacleOffsetY: 30
 --- !u!114 &1282311011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18674,7 +18688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_Name
-      value: H_little_O (19)
+      value: H_little_O (19)_withObstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18683,6 +18697,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1336306849}
+    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1336306852}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &1336306847 stripped
 Transform:
@@ -18707,6 +18724,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
+--- !u!114 &1336306852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336306848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 955548486}
+  obstacleOffsetY: 30
 --- !u!1001 &1338742019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20171,6 +20202,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
+--- !u!114 &1397481178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397481173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 955548486}
+  obstacleOffsetY: 30
 --- !u!1001 &1406769135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20388,7 +20433,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2221050070790660482, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
       propertyPath: m_Name
-      value: H_mid_O (2)
+      value: H_mid_O (2)_withObstacle
       objectReference: {fileID: 0}
     - target: {fileID: 4998413806008230425, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20437,6 +20482,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2221050070790660482, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1882159598}
+    - targetCorrespondingSourceObject: {fileID: 2221050070790660482, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1882159601}
   m_SourcePrefab: {fileID: 100100000, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
 --- !u!1 &1427569260 stripped
 GameObject:
@@ -23626,7 +23674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       propertyPath: m_Name
-      value: H_little_O (69)
+      value: H_little_O (69)_withObstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23635,6 +23683,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1606703880}
+    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1606703883}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &1606703878 stripped
 Transform:
@@ -23659,6 +23710,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
+--- !u!114 &1606703883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606703879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 1580358941}
+  obstacleOffsetY: 30
 --- !u!1 &1609099288
 GameObject:
   m_ObjectHideFlags: 0
@@ -25138,9 +25203,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1678298818}
-    - targetCorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1678298817}
   m_SourcePrefab: {fileID: 100100000, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
 --- !u!4 &1678298815 stripped
 Transform:
@@ -25152,20 +25214,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2509331528913426343, guid: 4dc98eac088e5f643b1ce89accbe1da8, type: 3}
   m_PrefabInstance: {fileID: 1678298814}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1678298817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678298816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 1453992697}
-  obstacleOffsetY: 30
 --- !u!114 &1678298818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26249,7 +26297,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2221050070790660482, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
       propertyPath: m_Name
-      value: H_mid_O (1)
+      value: H_mid_O (1)_withObstacle
       objectReference: {fileID: 0}
     - target: {fileID: 4998413806008230425, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26298,6 +26346,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2221050070790660482, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
       insertIndex: -1
       addedObject: {fileID: 717850678}
+    - targetCorrespondingSourceObject: {fileID: 2221050070790660482, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 717850681}
   m_SourcePrefab: {fileID: 100100000, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
 --- !u!1 &1742174978 stripped
 GameObject:
@@ -26654,7 +26705,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2221050070790660482, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
       propertyPath: m_Name
-      value: H_mid_O (6)
+      value: H_mid_O (6)_withObstacle
       objectReference: {fileID: 0}
     - target: {fileID: 4998413806008230425, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26703,6 +26754,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2221050070790660482, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
       insertIndex: -1
       addedObject: {fileID: 316271172}
+    - targetCorrespondingSourceObject: {fileID: 2221050070790660482, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 316271175}
   m_SourcePrefab: {fileID: 100100000, guid: fec027618c8c8434980f11ecf2bcf916, type: 3}
 --- !u!1001 &1776120080
 PrefabInstance:
@@ -28810,6 +28864,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderToIgnore: {fileID: 1125739146}
+--- !u!114 &1882159601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882159594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ec3dbb32e43408af2542e50ad0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 1580358941}
+  obstacleOffsetY: 30
 --- !u!1001 &1882214538
 PrefabInstance:
   m_ObjectHideFlags: 0
