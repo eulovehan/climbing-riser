@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public bool IsGameOver { get; private set; }
+    public bool isGamePlaying { get; private set; }
 
     private AudioSource audioSource;
     public AudioClip backgroundSound; // 배경 음악 오디오 클립
@@ -186,5 +187,10 @@ public class GameManager : MonoBehaviour
 
         audioSource.volume = 0;
         audioSource.Stop();
+    }
+
+    public void setIsGamePlaying(bool isGamePlaying)
+    {
+        this.isGamePlaying = isGamePlaying;
     }
 }

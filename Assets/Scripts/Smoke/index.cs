@@ -24,6 +24,12 @@ public class Smoke : MonoBehaviour
 
     void Update()
     {
+        // 게임이 진행 중이 아닌 경우에는 가스를 움직이지 않음
+        if (!GameManager.Instance.isGamePlaying)
+        {
+            return;
+        }
+
         // smoke 점점 위로 이동(riseSpeed만큼)
         transform.Translate(Vector3.up * riseSpeed * Time.deltaTime);
 

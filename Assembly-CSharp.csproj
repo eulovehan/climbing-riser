@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/TwoSecondsDelayView/index.cs" />
+    <Compile Include="Assets/Scripts/GameStartButton/index.cs" />
     <Compile Include="Assets/Scripts/IntroNextButton/NextButton2.cs" />
     <Compile Include="Assets/Scripts/Camera/PlayerCamera_vertical.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextEventHandler.cs" />
