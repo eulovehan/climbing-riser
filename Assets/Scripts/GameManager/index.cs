@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip backgroundSound; // 배경 음악 오디오 클립
+    public AudioClip introBackgroundSound; // 인트로 배경 음악 오디오 클립
+
     public float totalHuman = 0;
     public float filedResuceHuman = 0; // 구조하지 못한 사람 수
     public bool isLive = true; // 생존 여부
@@ -31,15 +33,33 @@ public class GameManager : MonoBehaviour
             audioSource.playOnAwake = false;
             audioSource.volume = 0.5f;
             backgroundSound = Resources.Load<AudioClip>("Audio/bgm");
+            introBackgroundSound = Resources.Load<AudioClip>("Audio/intro_bgm");
 
-            // 배경 음악 재생
-            PlayBackgroundSound();
+            // 현재 씬의 배경 음악 재생
+            PlayBackgroundSound(SceneManager.GetActiveScene().name);
         }
         else
         {
             Destroy(gameObject);
         }
     }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 씬이 로드될 때마다 배경 음악 재생
+        PlayBackgroundSound(scene.name);
+    }
+
 
     // 옥상에 올라감
 
@@ -77,14 +97,31 @@ public class GameManager : MonoBehaviour
     {
         IsGameOver = false;
         SceneManager.LoadScene("ClimbingRiser", LoadSceneMode.Single); // 게임 시작 씬 이름으로 변경
-        DestroyUI("RestartButton");
+        // DestroyUI("RestartButton");
     }
 
     public void StartGame()
     {
         IsGameOver = false;
         SceneManager.LoadScene("ClimbingRiser", LoadSceneMode.Single);
-        DestroyUI("StartButton");
+        // DestroyUI("StartButton");
+    }
+
+    public void StartIntro1()
+    {
+        SceneManager.LoadScene("Intro1", LoadSceneMode.Single);
+    }
+    public void StartIntro2()
+    {
+        SceneManager.LoadScene("Intro2", LoadSceneMode.Single);
+    }
+    public void StartIntro3()
+    {
+        SceneManager.LoadScene("Intro3", LoadSceneMode.Single);
+    }
+    public void StartIntro4()
+    {
+        SceneManager.LoadScene("Intro4", LoadSceneMode.Single);
     }
 
     private void DestroyUI(string objectName)
@@ -108,18 +145,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void PlayBackgroundSound()
+    private void PlayBackgroundSound(string sceneName)
     {
-        if (backgroundSound != null)
+        if (sceneName.StartsWith("Intro"))
         {
-            audioSource.clip = backgroundSound;
-            audioSource.Play();
+            if (audioSource.clip != introBackgroundSound || !audioSource.isPlaying)
+            {
+                audioSource.clip = introBackgroundSound;
+                audioSource.Play();
+            }
         }
         else
         {
-            Debug.LogError("Background music is not set.");
+            if (audioSource.clip != backgroundSound || !audioSource.isPlaying)
+            {
+                audioSource.clip = backgroundSound;
+                audioSource.Play();
+            }
         }
     }
+
     
     // 코루틴을 시작하는 메서드
     public void GameOutVolume()
