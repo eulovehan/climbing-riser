@@ -21,6 +21,7 @@ public class index : MonoBehaviour
 
     public AudioSource audioSource; // 오디오 소스
     public AudioClip moveSound; // 움직일 때 재생할 소리
+    public GameObject ui; // UI (71 ~ 81)
     
     // states
     private Vector3 leftTouchTarget; // 현재 잡고있는 오브젝트 좌표
@@ -68,6 +69,9 @@ public class index : MonoBehaviour
 
         // holdGuid
         holdGuid();
+
+        // 남아있는 사람 문구 출력
+        OnGUI();
     }
 
     void FixedUpdate()
@@ -295,7 +299,7 @@ public class index : MonoBehaviour
             Vector3 target = (leftGrab.position + rightGrab.position) / 2;
 
             // 위치로 이동
-            float upSpeed = 150f;
+            float upSpeed = 100f;
 
             // 현재 위치에서 대상 오브젝트로 이동
             Vector3 newPosition = Vector3.MoveTowards(transform.position, target, upSpeed * Time.deltaTime);
@@ -507,5 +511,26 @@ public class index : MonoBehaviour
         isLeftGrab = false;
         isRightGrab = false;
         SetActionAnimation(ActionState.Stop);
+    }
+
+    // 남아있는 사람 문구 출력
+    void OnGUI() {
+        float y = transform.position.y;
+
+        if (y >= 71 && y <= 82) {
+            // 구조 못한 사람 수 파악
+            GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Human");
+            float filedResuceHuman = objectsWithTag.Length;
+
+            if (filedResuceHuman == 0) {
+                return;
+            }
+
+            ui.SetActive(true);
+        }
+
+        else {
+            ui.SetActive(false);
+        }
     }
 }
