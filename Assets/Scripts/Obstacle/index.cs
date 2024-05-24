@@ -3,7 +3,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     public float fallSpeed = 15f;
-    public string[] tagsToIgnore = { "Hold", "Pipe" }; // 무시할 태그 배열
+    public string[] tagsToIgnore = { "Hold", "Pipe", "Smoke", "StartButton" }; // 무시할 태그 배열
     public string tagToPlayer = "Player";
 
     private void Start()
@@ -19,6 +19,7 @@ public class Obstacle : MonoBehaviour
                 if (collider.CompareTag(tag))
                 {
                     Physics2D.IgnoreCollision(obstacleCollider, collider, true);
+                    Debug.Log("Ignoring collision with: " + collider.gameObject.name);
                 }
             }
         }

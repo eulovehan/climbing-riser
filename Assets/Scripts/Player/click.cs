@@ -72,7 +72,6 @@ public class click : MonoBehaviour
             // 홀드 잡는 소리 재생
             if (audioSource != null && holdSound != null)
             {
-                Debug.Log("clear!");
                 audioSource.PlayOneShot(holdSound);
             }
         }

@@ -26,7 +26,6 @@ public class TwoSecondsDelayView : MonoBehaviour
         foreach (GameObject uiElement in uiElements)
         {
             uiElement.SetActive(true);
-            Debug.Log(uiElement.name + " is now active.");
         }
     }
 }
