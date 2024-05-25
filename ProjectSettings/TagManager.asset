@@ -7,6 +7,11 @@ TagManager:
   - Hold
   - Obstacle
   - Pipe
+  - WindowHold
+  - Human
+  - GameManager
+  - Smoke
+  - StartButton
   layers:
   - Default
   - TransparentFX

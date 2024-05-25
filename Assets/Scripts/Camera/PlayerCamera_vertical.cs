@@ -12,23 +12,23 @@ public class PlayerCameraVertical : MonoBehaviour
     private float offsetY = 20.5f; // 카메라 Y 위치 보정값입니다.
 
     void LateUpdate()
-{
-    Renderer backgroundRenderer = background.GetComponent<Renderer>();
-    if (backgroundRenderer != null)
     {
-        backgroundX = background.transform.position.x + backgroundRenderer.bounds.size.x / 2 + offsetX;
-        minY = background.transform.position.y - backgroundRenderer.bounds.size.y / 2 + Camera.main.orthographicSize - offsetY;
+        Renderer backgroundRenderer = background.GetComponent<Renderer>();
+        if (backgroundRenderer != null)
+        {
+            backgroundX = background.transform.position.x + backgroundRenderer.bounds.size.x / 2 + offsetX;
+            minY = background.transform.position.y - backgroundRenderer.bounds.size.y / 2 + Camera.main.orthographicSize - offsetY;
 
-        float targetY = player.position.y + offset.y;
-        float cameraMinY = Mathf.Max(targetY, minY);
+            float targetY = player.position.y + offset.y;
+            float cameraMinY = Mathf.Max(targetY, minY);
 
-        Vector3 desiredPosition = new Vector3(backgroundX, cameraMinY, transform.position.z);
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
+            Vector3 desiredPosition = new Vector3(backgroundX, cameraMinY, transform.position.z);
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+            transform.position = smoothedPosition;
+        }
+        else
+        {
+            Debug.LogError("No Renderer attached to the Background object.");
+        }
     }
-    else
-    {
-        Debug.LogError("No Renderer attached to the Background object.");
-    }
-}
 }

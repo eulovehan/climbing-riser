@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,12 +16,16 @@ public class index : MonoBehaviour
     public Transform rightGrab; // 오른쪽 그랩 위치
     public Transform leftHand; // 왼손
     public Transform rightHand; // 오른손
+    public bool isLeftGrab; // 왼쪽 손 그랩 여부
+    public bool isRightGrab; // 오른쪽 손 그랩 여부
+
+    public AudioSource audioSource; // 오디오 소스
+    public AudioClip moveSound; // 움직일 때 재생할 소리
+    public GameObject ui; // UI (71 ~ 81)
     
     // states
     private Vector3 leftTouchTarget; // 현재 잡고있는 오브젝트 좌표
     private Vector3 rightTouchTarget; // 현재 잡고있는 오브젝트 좌표
-    private bool isLeftGrab; // 왼쪽 손 그랩 여부
-    private bool isRightGrab; // 오른쪽 손 그랩 여부
 
     // components
     private Rigidbody2D rb;
@@ -33,11 +39,23 @@ public class index : MonoBehaviour
         Stop,
         Rise
     }
+
+    // 가이드 오브젝트 색상 메모리
+    private Dictionary<GameObject, Color> holdOriginalColors = new Dictionary<GameObject, Color>();
+    private Dictionary<GameObject, Color> windowHoldOriginalColors = new Dictionary<GameObject, Color>();
+
+    // color
+    private Color guideColor = Color.green;
+    private Color windowHoldColor = new Color(0f, 255f, 33f, 0.1f);
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        // AudioSource 컴포넌트를 Player 오브젝트에서 가져옵니다.
+        audioSource = GetComponent<AudioSource>();
+        // 오디오 클립 로드
+        moveSound = Resources.Load<AudioClip>("Audio/moveSound");
     }
 
     // Update is called once per frame
@@ -48,6 +66,12 @@ public class index : MonoBehaviour
 
         // 올라가는 상태 설정
         SetRise();
+
+        // holdGuid
+        holdGuid();
+
+        // 남아있는 사람 문구 출력
+        OnGUI();
     }
 
     void FixedUpdate()
@@ -64,11 +88,6 @@ public class index : MonoBehaviour
     // 움직임 상태 설정
     void SetMoveState()
     {
-        // 올라가는 상태일 시 올라가는 상태로 고정
-        if (isLeftGrab || isRightGrab) {
-            SetActionAnimation(ActionState.Rise);
-            return;
-        }
 
         // 입력 감지. 음수면 좌측, 양수면 우측
         float x = Input.GetAxis("Horizontal");
@@ -76,9 +95,17 @@ public class index : MonoBehaviour
         // 이동 거리 대입
         movement.x = x;
 
+        // 올라가는 상태일 시 취소
+        if ((isLeftGrab || isRightGrab) && movement.sqrMagnitude <= 0) {
+            SetActionAnimation(ActionState.Rise);
+            return;
+        }
+
         // 상태 변화 감지에 따른 애니메이션 갱신
         if (movement.sqrMagnitude > 0) {
             SetActionAnimation(ActionState.Move);
+            isLeftGrab = false;
+            isRightGrab = false;
         }
 
         else {
@@ -99,6 +126,14 @@ public class index : MonoBehaviour
                 moveObject.SetActive(true);
                 stopObject.SetActive(false);
                 riseObject.SetActive(false);
+                // 움직일 때 소리 재생
+                if (!audioSource.isPlaying || audioSource.clip != moveSound)
+                {
+                    audioSource.clip = moveSound;
+                    audioSource.loop = true; // 반복 재생 설정
+                    audioSource.volume = 3f; // 볼륨 설정
+                    audioSource.Play();
+                }
                 break;
             }
 
@@ -106,6 +141,11 @@ public class index : MonoBehaviour
                 moveObject.SetActive(false);
                 stopObject.SetActive(true);
                 riseObject.SetActive(false);
+                // 멈출 때 소리 멈춤
+                if (audioSource.isPlaying)
+                {
+                    audioSource.Stop();
+                }
                 break;
             }
 
@@ -158,13 +198,16 @@ public class index : MonoBehaviour
                 return null;
             }
 
-            // 왼쪽 그랩 설정 + 현재 잡고있는 요소에 추가
-            else {
-                isLeftGrab = true;
-                leftTouchTarget = targetPosition;
-
-                return leftGrab;
+            // 이미 잡고있는데 한손만 잡고있는 경우 불가
+            if (isLeftGrab && !isRightGrab) {
+                return null;
             }
+            
+            // 왼쪽 그랩 설정 + 현재 잡고있는 요소에 추가
+            isLeftGrab = true;
+            leftTouchTarget = targetPosition;
+
+            return leftGrab;
         }
         
         // 오른손 요구
@@ -180,13 +223,16 @@ public class index : MonoBehaviour
                 return null;
             }
 
-            // 오른쪽 그랩 설정 + 현재 잡고있는 요소에 추가
-            else {
-                isRightGrab = true;
-                rightTouchTarget = targetPosition;
-
-                return rightGrab;
+            // 이미 잡고있는데 한손만 잡고있는 경우 불가
+            if (isRightGrab && !isLeftGrab) {
+                return null;
             }
+
+            // 오른쪽 그랩 설정 + 현재 잡고있는 요소에 추가
+            isRightGrab = true;
+            rightTouchTarget = targetPosition;
+
+            return rightGrab;
         }
     }
 
@@ -253,7 +299,7 @@ public class index : MonoBehaviour
             Vector3 target = (leftGrab.position + rightGrab.position) / 2;
 
             // 위치로 이동
-            float upSpeed = 150f;
+            float upSpeed = 100f;
 
             // 현재 위치에서 대상 오브젝트로 이동
             Vector3 newPosition = Vector3.MoveTowards(transform.position, target, upSpeed * Time.deltaTime);
@@ -311,11 +357,180 @@ public class index : MonoBehaviour
                 Vector3 currentPosition = transform.position;
 
                 // y 값을 -1로 설정하여 오브젝트를 아래로 이동시킴
-                currentPosition.y -= 0.5f * Time.deltaTime;
+                currentPosition.y -= 1f * Time.deltaTime;
 
                 // 오브젝트의 위치를 업데이트
                 transform.position = currentPosition;
             }
+        }
+    }
+
+    // 하일라이트
+    void holdGuid() {
+        // 탐색반경
+        float range = (!isLeftGrab && !isRightGrab) ? 3.5f : 5f;
+        
+        // 플레이어 위치
+        Vector3 playerPosition = transform.position;
+
+        // 일반 홀드 가이드
+        normalHoldGuid(range, playerPosition);
+
+        // 창문 홀드 가이드
+        windowHoldGuid(range, playerPosition);
+    }
+
+    // 일반 홀드 가이드
+    void normalHoldGuid(float range, Vector3 playerPosition) {
+        // 해당 태그를 가진 모든 오브젝트 찾기
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Hold");
+
+        // 현재 반경 내에 있는 오브젝트들을 추적하기 위한 HashSet
+        HashSet<GameObject> objectsWithinRadius = new HashSet<GameObject>();
+
+        foreach (GameObject obj in objectsWithTag)
+        {
+            // 플레이어와 오브젝트 사이의 거리 계산
+            float distance = Vector3.Distance(playerPosition, obj.transform.position);
+            Renderer objRenderer = obj.GetComponent<Renderer>();
+
+            if (objRenderer != null)
+            {
+                if (distance <= range)
+                {
+                    // 오브젝트가 반경 내에 있는 경우 색상 변경
+                    objectsWithinRadius.Add(obj);
+                    
+                    // 원래 색상을 저장하지 않았다면 저장
+                    if (!holdOriginalColors.ContainsKey(obj))
+                    {
+                        holdOriginalColors[obj] = objRenderer.material.color;
+                    }
+
+                    // 색상 변경
+                    objRenderer.material.color = guideColor;
+                }
+                else if (holdOriginalColors.ContainsKey(obj))
+                {
+                    // 반경 밖으로 벗어난 경우 원래 색상 복원
+                    objRenderer.material.color = holdOriginalColors[obj];
+                    holdOriginalColors.Remove(obj);
+                }
+            }
+        }
+
+        // 반경 내에 있는 오브젝트가 아니라면 원래 색상 복원
+        List<GameObject> keysToRemove = new List<GameObject>();
+        foreach (var kvp in holdOriginalColors)
+        {
+            if (!objectsWithinRadius.Contains(kvp.Key))
+            {
+                Renderer objRenderer = kvp.Key.GetComponent<Renderer>();
+                if (objRenderer != null)
+                {
+                    objRenderer.material.color = kvp.Value;
+                    keysToRemove.Add(kvp.Key);
+                }
+            }
+        }
+
+        // 원래 색상으로 복원한 오브젝트는 딕셔너리에서 제거
+        foreach (GameObject key in keysToRemove)
+        {
+            holdOriginalColors.Remove(key);
+        }
+
+        return;
+    }
+
+    // 창문 홀드 가이드
+    void windowHoldGuid(float range, Vector3 playerPosition) {
+        // 해당 태그를 가진 모든 오브젝트 찾기
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("WindowHold");
+
+        // 현재 반경 내에 있는 오브젝트들을 추적하기 위한 HashSet
+        HashSet<GameObject> objectsWithinRadius = new HashSet<GameObject>();
+
+        foreach (GameObject obj in objectsWithTag)
+        {
+            // 플레이어와 오브젝트 사이의 거리 계산
+            float distance = Vector3.Distance(playerPosition, obj.transform.position);
+            Renderer objRenderer = obj.GetComponent<Renderer>();
+
+            if (objRenderer != null)
+            {
+                if (distance <= range)
+                {
+                    // 오브젝트가 반경 내에 있는 경우 색상 변경
+                    objectsWithinRadius.Add(obj);
+                    
+                    // 원래 색상을 저장하지 않았다면 저장
+                    if (!windowHoldOriginalColors.ContainsKey(obj))
+                    {
+                        windowHoldOriginalColors[obj] = objRenderer.material.color;
+                    }
+
+                    // 색상 변경
+                    objRenderer.material.color = windowHoldColor;
+                }
+                else if (windowHoldOriginalColors.ContainsKey(obj))
+                {
+                    // 반경 밖으로 벗어난 경우 원래 색상 복원
+                    objRenderer.material.color = windowHoldOriginalColors[obj];
+                    windowHoldOriginalColors.Remove(obj);
+                }
+            }
+        }
+
+        // 반경 내에 있는 오브젝트가 아니라면 원래 색상 복원
+        List<GameObject> keysToRemove = new List<GameObject>();
+        foreach (var kvp in windowHoldOriginalColors)
+        {
+            if (!objectsWithinRadius.Contains(kvp.Key))
+            {
+                Renderer objRenderer = kvp.Key.GetComponent<Renderer>();
+                if (objRenderer != null)
+                {
+                    objRenderer.material.color = kvp.Value;
+                    keysToRemove.Add(kvp.Key);
+                }
+            }
+        }
+
+        // 원래 색상으로 복원한 오브젝트는 딕셔너리에서 제거
+        foreach (GameObject key in keysToRemove)
+        {
+            windowHoldOriginalColors.Remove(key);
+        }
+
+        return;
+    }
+
+    // 핸드그립 해제
+    public void obstacleShock() {
+        isLeftGrab = false;
+        isRightGrab = false;
+        SetActionAnimation(ActionState.Stop);
+    }
+
+    // 남아있는 사람 문구 출력
+    void OnGUI() {
+        float y = transform.position.y;
+
+        if (y >= 71 && y <= 82) {
+            // 구조 못한 사람 수 파악
+            GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Human");
+            float filedResuceHuman = objectsWithTag.Length;
+
+            if (filedResuceHuman == 0) {
+                return;
+            }
+
+            ui.SetActive(true);
+        }
+
+        else {
+            ui.SetActive(false);
         }
     }
 }
